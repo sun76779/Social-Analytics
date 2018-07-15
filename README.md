@@ -118,7 +118,6 @@ plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
 now = datetime.now()
 now = now.strftime("%Y-%m-%d %H:%M")
 plt.title(f"Sentiment Analysis of Tweets ({now})")
-plt.xlim([x_vals.max(),x_vals.min()]) #Bonus
 plt.ylabel("Tweet Polarity")
 plt.xlabel("Tweets Ago")
 plt.legend(bbox_to_anchor = (1,1),
@@ -132,23 +131,7 @@ plt.show()
 ```
 
 
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-7-7a362c31c49b> in <module>()
-         12 now = now.strftime("%Y-%m-%d %H:%M")
-         13 plt.title(f"Sentiment Analysis of Tweets ({now})")
-    ---> 14 plt.xlim([x_vals.max(),x_vals.min()]) #Bonus
-         15 plt.ylabel("Tweet Polarity")
-         16 plt.xlabel("Tweets Ago")
-    
-
-    NameError: name 'x_vals' is not defined
-
-
-
-![png](output_5_1.png)
+![png](output_5_0.png)
 
 
 ## Overall Media Twitter Sentiment by Account
@@ -177,6 +160,14 @@ now = now.strftime("%Y-%m-%d %H:%M")
 plt.title(f"Overall Media Sentiment based on Twitter ({now})")
 plt.ylabel("Tweet Polarity")
 plt.xlabel("Twitter Accounts")
+
+# Create labels
+label = mean_point["Compound"].round(2)
+
+# Text on the top of each barplot
+for i in range(5):
+    plt.text(x = i , y = 0.02, s = label[i], size = 16)
+ 
 
 # save as out put
 plt.savefig('Output/Mean_Sentiment.png', bbox_inches = 'tight')
